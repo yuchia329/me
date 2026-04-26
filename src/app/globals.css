@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #0d1117; /* GitHub Dark background style */
+  --foreground: #e6edf3;
+  --primary: #fb923c; /* Retro Orange / Amber */
+  --primary-foreground: #000000;
+  --muted: #21262d;
+  --muted-foreground: #8b949e;
+  --border: #30363d;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Subtle dot grid for the developer vibe */
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Enforce Monospace on headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono), monospace;
+  font-weight: 600;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.terminal-prompt::before {
+  content: ">_ ";
+  color: var(--primary);
+  font-family: var(--font-mono), monospace;
+}
+
+/* Restyled glass for the new dark mode aesthetics */
+.glass {
+  background: var(--muted);
+  border: 1px solid var(--border);
+}
