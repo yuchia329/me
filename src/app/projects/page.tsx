@@ -15,6 +15,14 @@ const projects = [
     live: "https://hubstream.yuchia.dev/"
   },
   {
+    title: "K8S Observability Platform",
+    desc: "Built a comprehensive monitoring stack for a WebRTC application, implementing metrics collection, visualization, and alerting to ensure high availability and performance.",
+    img: "/assets/monitoring-stack.webp",
+    tech: ["Pormetheus", "Grafana", "Loki", "Promtail", "Kubernetes", "Helm", "Linux", "Node.js"],
+    github: "https://github.com/yuchia329/k8s-scaler-dashboard",
+    live: "https://grafana.yuchia.dev/d/hubstream-webrtc-01/hubstream-webrtc-dashboard?orgId=1&from=now-1d&to=now&timezone=browser&var-kind=$__all&refresh=30s"
+  },
+  {
     title: "LLM4Subjects",
     desc: "Fine-tuned LLMs for the SemEval'25 extreme multi-label classification challenge. Engineered solutions to predict over 200,000 document tags for bilingual (English & German) library literature across an 80k-record dataset.",
     img: "/assets/llm4subjects.jpg",

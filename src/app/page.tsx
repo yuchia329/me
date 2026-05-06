@@ -20,10 +20,15 @@ const featuredProjects = [
     link: "https://hubstream.yuchia.dev/",
   },
   {
-    title: "LLM4Subjects",
-    desc: "Fine-tuned LLMs for the SemEval'25 extreme multi-label classification challenge. Engineered solutions to predict over 200,000 document tags for bilingual (English & German) library literature across an 80k-record dataset.",
-    link: "https://github.com/yuchia329/llms4subjects",
-  }
+    title: "K8S Observability Platform",
+    desc: "Built a comprehensive monitoring stack for a WebRTC application, implementing metrics collection, visualization, and alerting to ensure high availability and performance.",
+    link: "https://grafana.yuchia.dev/d/hubstream-webrtc-01/hubstream-webrtc-dashboard?orgId=1&from=now-1d&to=now&timezone=browser&var-kind=$__all&refresh=30s",
+  },
+  // {
+  //   title: "LLM4Subjects",
+  //   desc: "Fine-tuned LLMs for the SemEval'25 extreme multi-label classification challenge. Engineered solutions to predict over 200,000 document tags for bilingual (English & German) library literature across an 80k-record dataset.",
+  //   link: "https://github.com/yuchia329/llms4subjects",
+  // }
 ];
 
 export default function Home() {
