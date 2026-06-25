@@ -1,0 +1,46 @@
+\begin{twocolentry}{
+    \textit{Jun 2026}
+  }
+  \textbf{\href{https://github.com/yuchia329/yapper}{Yapper (Movie Commentary Platform)}}
+  \end{twocolentry}
+  \begin{onecolentry}
+  \begin{highlights}
+  % === Active: top 2 for Microsoft Foundry Agents (AI infrastructure + distributed systems at scale) ===
+    \item Engineered a GPU model-serving daemon pooling ASR/TTS models on a 6x RTX 3090 box, with NVML VRAM placement and reservation accounting so cold-starts never double-book a GPU, plus lease/heartbeat crash-safety
+  
+    \item Architected a distributed Celery pipeline of 8 resource-routed tasks across 5 GPU/CPU queues with S3 checkpoint caching, so queue concurrency enforces hardware limits (one model per GPU) without coupling to stage logic
+  
+    \item Provisioned cloud-native Kubernetes infrastructure with Kustomize local/prod overlays and one-apply Terraform across 4 providers, plus a full Prometheus/Grafana/Loki telemetry stack with a custom scrape-time metrics collector
+  
+  % === Inactive buffer (kept commented; swap in as needed) ===
+  % BE
+  % \item Architected a Celery chain DAG splitting the pipeline into 8 resource-routed tasks across 5 named queues (cpu/asr/tts/llm/render), each re-entering the pipeline at until= checkpoints with S3 artifact caching — so queue concurrency enforces physical limits (one model per GPU) without touching stage logic
+  
+  % \item Engineered a shared \$3 LLM cost-control service as an atomic Redis milli-USD ledger with check-and-increment pre-flight reservation (INCRBY + cap-check + DECRBY rollback) so concurrent runs can't double-spend shared headroom
+  
+  % \item Diagnosed and fixed a Celery long-task redelivery bug (Redis's 1h visibility timeout re-ran multi-minute TTS tasks) by widening visibility\_timeout to 6h with a sub-timeout hard kill + task\_acks\_late
+  
+  % \item Implemented a no-signin identity model with itsdangerous signed HttpOnly cookies, namespacing every Postgres query by session for tenant isolation without an auth provider
+  % MLE
+  % \item Built a custom on-demand GPU supervisor daemon (gpud) pooling ASR/TTS model subprocesses across a 6×RTX 3090 box — NVML-probed vRAM placement with pending-launch reservation accounting so concurrent cold-starts never double-book a GPU, plus lease/heartbeat/TTL crash-safety and idle reaping
+  
+  % \item Served WhisperX ASR (large-v3, fp16, batch=16, word-level alignment) and CosyVoice2-0.5B TTS as gRPC services (grpc.health.v1), choosing streaming direction per workload around gRPC's 4MB frame cap
+  % \item Shipped zero-shot voice cloning with a pinned reference + fixed RNG seed so timbre stays stable across thousands of lines, plus automated reference extraction
+  % \item Solved a cross-env ML dependency conflict by isolating ASR (py3.12) and TTS (py3.10) into separate uv envs with pinned protobuf/grpcio gencode importing cleanly under both
+  
+  % AI Engineer
+  % \item Designed the clip\_ref grounding pattern that makes timestamp hallucination structurally impossible: model emits only stable clip\_ids, a single SQLite resolution choke point converts them to real timecodes and raises on any unknown ref before spend
+  
+  % \item Built a multimodal MAP-REDUCE core over feature-length film: vision MAP pass (transcript + less than 180 base64 keyframes => Pydantic beat sheet), text-only REDUCE pass => narration script
+  
+  % \item Wrote a provider-pluggable OpenAI-compatible client (MiniMax-M3 / self-hosted vLLM / any gateway by config) with robust reasoning-model JSON handling (<think> stripping, salvage, corrective retries, Pydantic validation)
+  
+  % \item Built a deterministic runtime-budget gate that never trusts the model's length estimate — recomputes spoken duration and importance-trims to 10–12 min while protecting climax/CTA
+  
+  % FS
+  % \item Solved off-cluster GPU access (SSH-only box, no routed IP) with a self-healing in-cluster SSH-tunnel Deployment forwarding gpud's control port + a 40-port lease pool, fronted by a headless Service
+  
+  % \item Kustomize base + local/prod overlays (in-cluster MinIO/NodePort vs ARM64 k3s/Traefik/Cloudflare/S3); Terraform across 4 providers in one apply; full Prometheus/Grafana/Loki stack with a scrape-time custom collector that sidesteps the multiprocess-counter problem
+  
+  \end{highlights}
+  \end{onecolentry}
